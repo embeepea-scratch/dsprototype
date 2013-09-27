@@ -3,13 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" class="js"><!--<![endif]--><head profile="http://www.w3.org/1999/xhtml/vocab"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./ds_sample_files/shares.json"></script><script type="text/javascript" src="./ds_sample_files/auth014.js"></script><script type="text/javascript" src="./ds_sample_files/counter016.js"></script><link rel="stylesheet" type="text/css" href="./ds_sample_files/counter013.css" media="all"><link rel="stylesheet" type="text/css" href="./ds_sample_files/widget116.css" media="all">
 
 	
-<meta content="Drought: May 15th, 2001" about="/maps-data/data-snapshot/drought/2001/05/15" property="dc:title">
 <meta about="/maps-data/data-snapshot/drought/2001/05/15" property="sioc:num_replies" content="0" datatype="xsd:integer">
 <link rel="shortlink" href="http://datasnapshots.nemac.org/node/29471">
 <link rel="canonical" href="./ds_sample_files/ds_sample.html">
 <meta name="Generator" content="Drupal 7 (http://drupal.org)">
 <link rel="canonical" href="./ds_sample_files/ds_sample.html">
-	<title>Drought: May 15th, 2001 | NOAA Climate.gov</title>
+	<title>Drought | NOAA Climate.gov</title>
 	<link href="http://datasnapshots.nemac.org/sites/all/themes/custom/mu/favicon.ico" rel="icon" type="image/x-icon">
 	<style type="text/css" media="all">@import url("http://datasnapshots.nemac.org/modules/system/system.base.css?mtgegb");
 @import url("http://datasnapshots.nemac.org/modules/system/system.menus.css?mtgegb");
@@ -52,8 +51,8 @@
 <style type="text/css" media="all">@import url("http://datasnapshots.nemac.org/sites/all/themes/custom/mu/css/mu-alpha-default.css?mtgegb");
 @import url("http://datasnapshots.nemac.org/sites/all/themes/custom/mu/css/mu-alpha-default-normal.css?mtgegb");
 @import url("http://datasnapshots.nemac.org/sites/all/themes/contrib/omega/alpha/css/grid/alpha_default/normal/alpha-default-normal-12.css?mtgegb");</style>
-  
-	<script type="text/javascript" defer="" async="" src="./ds_sample_files/piwik.js"></script><script type="text/javascript" src="./ds_sample_files/jquery.js"></script>
+
+<script type="text/javascript" defer="" async="" src="./ds_sample_files/piwik.js"></script><script type="text/javascript" src="./ds_sample_files/jquery.js"></script>
 <script type="text/javascript" src="./ds_sample_files/jquery.once.js"></script>
 <script type="text/javascript" src="./ds_sample_files/drupal.js"></script>
 <script type="text/javascript" src="./ds_sample_files/states.js"></script>
@@ -91,6 +90,23 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 			#breadcrumb {width:940px;position:relative;clear:left;margin-top:65px;}
 */		</style>
 	<![endif]-->
+
+<script type="text/javascript">
+  if (jQuery !== undefined) {
+    jQuery_old = jQuery;
+  }
+</script>
+<script type="text/javascript" src="jquery-ui/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="jquery-ui/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
+<script type="text/javascript">
+  jQuery191 = jQuery;
+  if (jQuery_old !== undefined) {
+    jQuery = jQuery_old;
+  }
+</script>
+<script type="text/javascript" src="./dsprototype.js"></script>
+<link type="text/css" rel="stylesheet" href="./dsprototype.css">
+<link type="text/css" rel="stylesheet" href="jquery-ui/jquery-ui-1.10.3/themes/base/jquery.ui.all.css">
 
 </head>
 
@@ -165,7 +181,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
   <div class="block-inner clearfix">
                 
     <div class="content clearfix">
-      <div id="breadcrumb" class="clearfix"><ul class="breadcrumb"><li class="depth-1 odd first"><a href="http://datasnapshots.nemac.org/">Home</a></li><li class="depth-2 even last"><a href="./ds_sample_files/ds_sample.html" class="active">Drought: May 15th, 2001</a></li></ul></div>    </div>
+      <div id="breadcrumb" class="clearfix"><ul class="breadcrumb"><li class="depth-1 odd first"><a href="http://datasnapshots.nemac.org/">Home</a></li><li class="depth-2 even last"><a href="./ds_sample_files/ds_sample.html" class="active" id="breadcrumb_tail">Drought: May 15th, 2001</a></li></ul></div>    </div>
   </div>
 </div>  </div>
 </div>  </div>
@@ -183,17 +199,59 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
           <!--  <footer class="submitted"><span property="dc:date dc:created" content="2013-08-22T14:15:51-07:00" datatype="xsd:dateTime">Thu, 2013-08-22 14:15</span> -- <span rel="sioc:has_creator"><span class="username" xml:lang="" about="/users/admin" typeof="sioc:UserAccount" property="foaf:name" datatype="">admin</span></span></footer>-->
     
   
-  <div class="content clearfix">
-    <div id="data-snapshots-navbar" style="margin-bottom: 5px;"><div style="display: inline-block;">Category:</div><select id="nav-bar-category" style="display:inline-block;"><option value="Snow">Snow</option><option value="Drought" selected="">Drought</option></select><div style="display: inline-block;">Year:</div><select id="nav-bar-year" style="display:inline-block;"><option value="2001" selected="">2001</option><option value="2010" class="ds-disabled" disabled="">2010</option><option value="2013">2013</option></select><div style="display: inline-block;">Month:</div><select id="nav-bar-month" style="display:inline-block;"><option value="02" class="ds-disabled" disabled="">February</option><option value="05" selected="">May</option><option value="06">June</option></select><div style="display: inline-block;">Day:</div><select id="nav-bar-day" style="display:inline-block;"><option value="05" class="ds-disabled" disabled="">05</option><option value="09" class="ds-disabled" disabled="">09</option><option value="15" selected="">15</option><option value="18" class="ds-disabled" disabled="">18</option><option value="22">22</option></select><button><a id="nav-bar-link" href="http://datasnapshots.nemac.org/maps-data/data-snapshot/Drought/2001/05/15">Go</a></button></div><div style="display: inline-block; width:620px; float: left;"><span class="print-link"></span><div class="field field-name-field-data-snapshot-image field-type-link-field field-label-hidden"><div class="field-items"><img src="./ds_sample_files/ClimCond_usdm010515_620.png" class="field-item even" style="margin-bottom: 10px;"></div></div></div><div style="display:inline-block; width:310px; margin-left: 10px;"><h2>
-	This is the first example question</h2>
-<p>This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.&nbsp;This is the first example answer. This will be replaced later and is just filler text.</p>
-<h2>
-	This is the second example question</h2>
-<p>This is the second example answer. This will be replaced later and is just filler text.&nbsp;This is the second example answer. This will be replaced later and is just filler text.&nbsp;This is the second example answer. This will be replaced later and is just filler text.&nbsp;This is the second example answer. This will be replaced later and is just filler text.&nbsp;This is the second example answer. This will be replaced later and is just filler text.&nbsp;This is the second example answer. This will be replaced later and is just filler text.</p>
-<h2>
-	This is the last example question</h2>
-<p>This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.&nbsp;This is the last example answer. This will be replaced later and is just filler text.</p>
-</div>  </div>
+<div class="content clearfix">
+<div id="data-snapshots-navbar" style="margin-bottom: 5px;">
+  <div style="display: inline-block;">Category:</div>
+  <select id="nav-bar-category" style="display:inline-block;">
+    <?php print_select_options($categories); ?>
+  </select>
+  <div style="display: inline-block;">Year:</div>
+  <select id="nav-bar-year" style="display:inline-block;">
+    <?php print_select_options($years); ?>
+  </select>
+  <div style="display: inline-block;">Month:</div>
+  <select id="nav-bar-month" style="display:inline-block;">
+    <?php print_select_options($months); ?>
+  </select>
+  <div style="display: inline-block;">Day:</div>
+  <select id="nav-bar-day" style="display:inline-block;">
+    <?php print_select_options($days); ?>
+  </select>
+  <button><a id="nav-bar-link" href="http://datasnapshots.nemac.org/maps-data/data-snapshot/Drought/2001/05/15">Go</a></button>
+<br>
+<div id="timeslider"></div>
+</div>
+<div style="display: inline-block; width:620px; float: left;">
+  <span class="print-link"></span>
+  <div class="field field-name-field-data-snapshot-image field-type-link-field field-label-hidden">
+    <div class="field-items">
+      <img src="http://datasnapshots-usdm-sample.nemac.com:8080/drought-usdm--2000-01-04--620.png" id="snapshot_image_620" class="field-item even" style="margin-bottom: 10px;">
+    </div>
+  </div>
+</div>
+<div style="display:inline-block; width:310px; margin-left: 10px;">
+  <h2>This is the first example question</h2>
+  <p>This is the first example answer. This will be replaced later and
+     is just filler text.&nbsp;This is the first example answer. This will
+     be replaced later and is just filler text.&nbsp;This is the first
+     example answer. This will be replaced later and is just filler
+     text.&nbsp;This is the first example answer. This will be replaced
+     later and is just filler text.&nbsp;This is the first example
+     answer. This will be replaced later and is just filler text.</p>
+   <h2>This is the second example question</h2>
+   <p>This is the second example answer. This will be replaced later and is
+     just filler text.&nbsp;This is the second example answer. This will be
+     replaced later and is just filler text.&nbsp;This is the second example
+     answer. This will be replaced later and is just filler text.</p>
+   <h2>This is the last example question</h2>
+   <p>This is the last example answer. This will be replaced later and is
+     just filler text.&nbsp;This is the last example answer. This will be
+     replaced later and is just filler text.&nbsp;This is the last example
+     answer. This will be replaced later and is just filler text.&nbsp;This is
+     the last example answer. This will be replaced later and is just filler
+     text.&nbsp;This is the last example answer.</p>
+  </div>
+</div>
   
   <div class="clearfix">
           <nav class="links node-links clearfix"></nav>
