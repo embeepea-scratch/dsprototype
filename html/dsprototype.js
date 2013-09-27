@@ -850,7 +850,7 @@
                 snapshot["preload"].src = image_620_path(prefix, year, snapshot.mon, snapshot.day);
             }
         }
-        console.log('preloaded images for ' + year);
+        //console.log('preloaded images for ' + year);
     }
 
     function set_year(year, snapshot_index, preload) {
