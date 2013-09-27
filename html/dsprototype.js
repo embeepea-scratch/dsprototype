@@ -1,7 +1,7 @@
 (function($) {
 
 
-    month_names = {
+    var month_names = {
         '01' : 'January',
         '02' : 'February',
         '03' : 'March',
@@ -16,11 +16,10 @@
         '12' : 'December'
     };
 
-    product = {
-        'filename_prefix' : 'drought-usdm',
+    var product = {
         'data' : [
             {
-                'year' : 2000,
+                'year' : '2000',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '04' },
                     { 'mon' : '01', 'day' : '11' },
@@ -78,7 +77,7 @@
             },
             
             {
-                'year' : 2001,
+                'year' : '2001',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '02' },
                     { 'mon' : '01', 'day' : '09' },
@@ -136,7 +135,7 @@
             },
             
             {
-                'year' : 2002,
+                'year' : '2002',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '01' },
                     { 'mon' : '01', 'day' : '08' },
@@ -195,7 +194,7 @@
             },
             
             {
-                'year' : 2003,
+                'year' : '2003',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '07' },
                     { 'mon' : '01', 'day' : '14' },
@@ -253,7 +252,7 @@
             },
             
             {
-                'year' : 2004,
+                'year' : '2004',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '06' },
                     { 'mon' : '01', 'day' : '13' },
@@ -311,7 +310,7 @@
             },
             
             {
-                'year' : 2005,
+                'year' : '2005',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '04' },
                     { 'mon' : '01', 'day' : '11' },
@@ -369,7 +368,7 @@
             },
             
             {
-                'year' : 2006,
+                'year' : '2006',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '03' },
                     { 'mon' : '01', 'day' : '10' },
@@ -427,7 +426,7 @@
             },
             
             {
-                'year' : 2007,
+                'year' : '2007',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '02' },
                     { 'mon' : '01', 'day' : '09' },
@@ -485,7 +484,7 @@
             },
             
             {
-                'year' : 2008,
+                'year' : '2008',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '01' },
                     { 'mon' : '01', 'day' : '08' },
@@ -544,7 +543,7 @@
             },
             
             {
-                'year' : 2009,
+                'year' : '2009',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '06' },
                     { 'mon' : '01', 'day' : '13' },
@@ -602,7 +601,7 @@
             },
             
             {
-                'year' : 2010,
+                'year' : '2010',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '05' },
                     { 'mon' : '01', 'day' : '12' },
@@ -660,7 +659,7 @@
             },
             
             {
-                'year' : 2011,
+                'year' : '2011',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '04' },
                     { 'mon' : '01', 'day' : '11' },
@@ -718,7 +717,7 @@
             },
             
             {
-                'year' : 2012,
+                'year' : '2012',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '03' },
                     { 'mon' : '01', 'day' : '10' },
@@ -776,7 +775,7 @@
             },
             
             {
-                'year' : 2013,
+                'year' : '2013',
                 'snapshots' : [
                     { 'mon' : '01', 'day' : '01' },
                     { 'mon' : '01', 'day' : '08' },
@@ -810,7 +809,17 @@
 
     // console.log('len = ' + product['data'][0]['snapshots'].length);
 
-    var snapshots = product['data'][0]['snapshots'];
+    function year_to_year_index(year) {
+        var i;
+        for (i=0; i<product["data"].length; ++i) {
+            if (product["data"][i]["year"] === year) {
+                return i;
+            }
+        }
+        return undefined;
+    }
+
+    var current_snapshot_index = 0;
 
     function set_breadcrumb(product_name, year, month, day) {
         $('#breadcrumb_tail').text(product_name + ': ' + month_names[month] + ' ' + day + ', ' + year);
@@ -818,27 +827,56 @@
 
     function set_image(prefix, year, month, day) {
         var filename = prefix + '--' + year + '-' + month + '-' + day + '--620.png';
-        $('#snapshot_image_620').attr('src', "http://datasnapshots-usdm-sample.nemac.com:8080/" + filename);
-        console.log(filename);
+        $('#snapshot_image_620').attr('src', "./images/drought-usdm/" + filename);
     }
 
-    $('document').ready(function() {
+    function set_all(year, mon, day) {
+        set_breadcrumb('Drought', year, mon, day);
+        set_image('drought-usdm', year, mon, day);
+    }
+
+    function set_year(year, snapshot_index) {
+        current_snapshot_index = snapshot_index;
+        var current_year = year;
+        var snapshots = product['data'][year_to_year_index(current_year)]['snapshots'];
         $('#timeslider').slider({
             'min' : 0,
             'max' : snapshots.length-1,
+            'value' : snapshot_index,
             'change' : function(event, ui) {
-                var i = $(this).slider('value');
-                var snapshot = snapshots[i];
-                set_breadcrumb('Drought', '2000', snapshot.mon, snapshot.day);
-                set_image(product['filename_prefix'], '2000', snapshot.mon, snapshot.day);
+                current_snapshot_index = $(this).slider('value');
+                var snapshot = snapshots[current_snapshot_index];
+                set_all(current_year, snapshot.mon, snapshot.day);
             },
             'slide' : function(event, ui) {
-                var i = $(this).slider('value');
-                var snapshot = snapshots[i];
-                set_breadcrumb('Drought', '2000', snapshot.mon, snapshot.day);
-                set_image(product['filename_prefix'], '2000', snapshot.mon, snapshot.day);
+                current_snapshot_index = $(this).slider('value');
+                var snapshot = snapshots[current_snapshot_index];
+                set_all(current_year, snapshot.mon, snapshot.day);
             }
         });
+        var snapshot = snapshots[current_snapshot_index];
+        set_all(current_year, snapshot.mon, snapshot.day);
+    }
+
+    $('document').ready(function() {
+        $('#yearslider').slider({
+            'min' : 0,
+            'max' : 2013-2000,
+            'change' : function(event, ui) {
+                var year_index = $(this).slider('value');
+                yyyy = product["data"][year_index]["year"];
+                set_year(yyyy, current_snapshot_index);
+            },
+            'slide' : function(event, ui) {
+                var year_index = $(this).slider('value');
+                yyyy = product["data"][year_index]["year"];
+                set_year(yyyy, current_snapshot_index);
+            }
+        });
+
+        set_year('2000', 0);
+
+
     });
     
 }(jQuery191));

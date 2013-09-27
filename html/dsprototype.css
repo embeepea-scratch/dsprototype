@@ -1,3 +1,7 @@
-#timeslider {
+#timeslider, #yearslider {
   width: 400px;
+}
+
+#timeslider-row {
+  margin-top: 20px;
 }

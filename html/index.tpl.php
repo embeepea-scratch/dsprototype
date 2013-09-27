@@ -201,31 +201,29 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
   
 <div class="content clearfix">
 <div id="data-snapshots-navbar" style="margin-bottom: 5px;">
-  <div style="display: inline-block;">Category:</div>
-  <select id="nav-bar-category" style="display:inline-block;">
-    <?php print_select_options($categories); ?>
-  </select>
-  <div style="display: inline-block;">Year:</div>
-  <select id="nav-bar-year" style="display:inline-block;">
-    <?php print_select_options($years); ?>
-  </select>
-  <div style="display: inline-block;">Month:</div>
-  <select id="nav-bar-month" style="display:inline-block;">
-    <?php print_select_options($months); ?>
-  </select>
-  <div style="display: inline-block;">Day:</div>
-  <select id="nav-bar-day" style="display:inline-block;">
-    <?php print_select_options($days); ?>
-  </select>
-  <button><a id="nav-bar-link" href="http://datasnapshots.nemac.org/maps-data/data-snapshot/Drought/2001/05/15">Go</a></button>
-<br>
-<div id="timeslider"></div>
+<table>
+  <tr>
+    <td>
+      Category:
+      <select id="nav-bar-category" style="display:inline-block;">
+        <?php print_select_options($categories); ?>
+      </select>
+    </td>
+    <td>
+      <table>
+        <tr><td align="right">Year:</td><td><div id="yearslider"></div></td></tr>
+        <tr id="timeslider-row"><td align="right">Week:</td><td><div id="timeslider"></div></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
 </div>
 <div style="display: inline-block; width:620px; float: left;">
   <span class="print-link"></span>
   <div class="field field-name-field-data-snapshot-image field-type-link-field field-label-hidden">
     <div class="field-items">
-      <img src="http://datasnapshots-usdm-sample.nemac.com:8080/drought-usdm--2000-01-04--620.png" id="snapshot_image_620" class="field-item even" style="margin-bottom: 10px;">
+      <img src="./images/drought-usdm/drought-usdm--2000-01-04--620.png" id="snapshot_image_620" class="field-item even" style="margin-bottom: 10px;">
     </div>
   </div>
 </div>
