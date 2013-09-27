@@ -204,7 +204,7 @@ jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":
 <table>
   <tr>
     <td>
-      Category:
+      The Category:
       <select id="nav-bar-category" style="display:inline-block;">
         <?php print_select_options($categories); ?>
       </select>
