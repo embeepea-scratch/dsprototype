@@ -820,25 +820,45 @@
     }
 
     var current_snapshot_index = 0;
+    var prefix = 'drought-usdm';
 
     function set_breadcrumb(product_name, year, month, day) {
         $('#breadcrumb_tail').text(product_name + ': ' + month_names[month] + ' ' + day + ', ' + year);
     }
 
     function set_image(prefix, year, month, day) {
-        var filename = prefix + '--' + year + '-' + month + '-' + day + '--620.png';
-        $('#snapshot_image_620').attr('src', "./images/drought-usdm/" + filename);
+        $('#snapshot_image_620').attr('src', image_620_path(prefix, year, month, day));
+    }
+
+    function image_620_path(prefix, year, month, day) {
+        return "./images/" + prefix + "/" + prefix + '--' + year + '-' + month + '-' + day + '--620.png';;
     }
 
     function set_all(year, mon, day) {
         set_breadcrumb('Drought', year, mon, day);
-        set_image('drought-usdm', year, mon, day);
+        set_image(prefix, year, mon, day);
     }
 
-    function set_year(year, snapshot_index) {
-        current_snapshot_index = snapshot_index;
+    function preload_images(prefix, year_index) {
+        var year = product["data"][year_index]["year"];
+        var snapshots = product["data"][year_index]["snapshots"];
+        var i;
+        for (i=0; i<snapshots.length; ++i) {
+            var snapshot = snapshots[i];
+            if (!snapshot["preload"]) {
+                snapshot["preload"] = new Image();
+                snapshot["preload"].src = image_620_path(prefix, year, snapshot.mon, snapshot.day);
+            }
+        }
+        console.log('preloaded images for ' + year);
+    }
+
+    function set_year(year, snapshot_index, preload) {
         var current_year = year;
-        var snapshots = product['data'][year_to_year_index(current_year)]['snapshots'];
+        var year_index = year_to_year_index(current_year);
+        var snapshots = product['data'][year_index]['snapshots'];
+        if (preload) { preload_images(prefix, year_index); }
+        current_snapshot_index = snapshot_index;
         $('#timeslider').slider({
             'min' : 0,
             'max' : snapshots.length-1,
@@ -865,16 +885,16 @@
             'change' : function(event, ui) {
                 var year_index = $(this).slider('value');
                 yyyy = product["data"][year_index]["year"];
-                set_year(yyyy, current_snapshot_index);
+                set_year(yyyy, current_snapshot_index, true);
             },
             'slide' : function(event, ui) {
                 var year_index = $(this).slider('value');
                 yyyy = product["data"][year_index]["year"];
-                set_year(yyyy, current_snapshot_index);
+                set_year(yyyy, current_snapshot_index, false);
             }
         });
 
-        set_year('2000', 0);
+        set_year('2000', 0, true);
 
 
     });
