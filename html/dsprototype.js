@@ -839,25 +839,35 @@
         set_image(prefix, year, mon, day);
     }
 
-    function preload_images(prefix, year_index) {
+    function preload_images(prefix, year_index, snapshot_index) {
         var year = product["data"][year_index]["year"];
         var snapshots = product["data"][year_index]["snapshots"];
+        var snapshot;
         var i;
+        // preload the images for this year
         for (i=0; i<snapshots.length; ++i) {
-            var snapshot = snapshots[i];
+            snapshot = snapshots[i];
             if (!snapshot["preload"]) {
                 snapshot["preload"] = new Image();
                 snapshot["preload"].src = image_620_path(prefix, year, snapshot.mon, snapshot.day);
             }
         }
-        //console.log('preloaded images for ' + year);
+        // preload the images for all years for this snapshot
+        for (i=0; i<13; ++i) {
+            year = product["data"][i]["year"];
+            snapshot = product["data"][i]["snapshots"][snapshot_index];
+            if (!snapshot["preload"]) {
+                snapshot["preload"] = new Image();
+                snapshot["preload"].src = image_620_path(prefix, year, snapshot.mon, snapshot.day);
+            }
+        }
     }
 
     function set_year(year, snapshot_index, preload) {
         var current_year = year;
         var year_index = year_to_year_index(current_year);
         var snapshots = product['data'][year_index]['snapshots'];
-        if (preload) { preload_images(prefix, year_index); }
+        if (preload) { preload_images(prefix, year_index, snapshot_index); }
         current_snapshot_index = snapshot_index;
         $('#timeslider').slider({
             'min' : 0,
